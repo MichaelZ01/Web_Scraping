@@ -22,7 +22,7 @@ if __name__ == '__main__':
     game_tabs = home_page_content.find('div', class_ = 'tab_content')
 
     # Each hyperlink represents a game
-    for game in game_tabs.find_all('a'):
+    for game in home_page_content.find_all('a'):
 
         # Extract game name and price
         game_name = game.find('div', class_ = 'tab_item_name')
