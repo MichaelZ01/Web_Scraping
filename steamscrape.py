@@ -19,10 +19,20 @@ if __name__ == '__main__':
 
     # Extract main page games
     home_page_content = soup.find('div', class_ = "home_tabs_content")
-    game_tabs = home_page_content.find('div', class_ = 'tab_content')
+    #game_tabs = home_page_content.find('div', class_ = 'tab_content')
 
+    #for hidden in home_page_content.find('a')['class']:
+    #  print(hidden.__dict__)
+
+    exit()
     # Each hyperlink represents a game
     for game in home_page_content.find_all('a'):
+
+        print(game)
+        print(game.parent.name)
+
+        #print(game.prettify())
+        # I want to find hyperlink's attributes
 
         # Extract game name and price
         game_name = game.find('div', class_ = 'tab_item_name')
