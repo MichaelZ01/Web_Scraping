@@ -21,29 +21,23 @@ if __name__ == '__main__':
     home_page_content = soup.find('div', class_ = "home_tabs_content")
     #game_tabs = home_page_content.find('div', class_ = 'tab_content')
 
-    #for hidden in home_page_content.find('a')['class']:
-    #  print(hidden.__dict__)
 
-    exit()
     # Each hyperlink represents a game
     for game in home_page_content.find_all('a'):
-
-        print(game)
-        print(game.parent.name)
-
-        #print(game.prettify())
-        # I want to find hyperlink's attributes
-
+        #print(game.attrs)
+         if 'hidden' in game.attrs['class']: #stops hidden games from showing up
+            continue
+         else:    
         # Extract game name and price
-        game_name = game.find('div', class_ = 'tab_item_name')
-        old_price = game.find('div', class_ = 'discount_original_price')
-        new_price = game.find('div', class_ = 'discount_final_price')
+            game_name = game.find('div', class_ = 'tab_item_name')
+            old_price = game.find('div', class_ = 'discount_original_price')
+            new_price = game.find('div', class_ = 'discount_final_price')
 
         # If the game had an original price
-        if old_price is not None:
-            print_new_price(game_name, old_price, new_price)
-        else:
-            print_old_price(game_name, new_price)
+            if old_price is not None:
+                print_new_price(game_name, old_price, new_price)
+            else:
+                print_old_price(game_name, new_price)
 
 
 '''
